@@ -3,4 +3,5 @@
 component-test1
 
 <x-tests.card title="Title1" content="Content1" :message="$message"/>
+<x-tests.card title="Title2" />
 </x-tests.app>
