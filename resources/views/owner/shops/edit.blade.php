@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form method="POST" action="{{ route('owner.shops.update', ['shop' => $shop->id ]) }}" enctype="multipart/form-data">
                         @csrf
+                        <div class="-m-2">
                         <div class="p2 w-1/2 mx-auto">
                           <x-input-error :messages="$errors->get('name')" class="mt-2" />
                           <div class="relative">
