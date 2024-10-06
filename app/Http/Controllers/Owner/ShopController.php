@@ -54,16 +54,18 @@ class ShopController extends Controller
 
         //リサイズなしの場合
         // Storage::putFile('public/shops', $imageFile);
-        Storage::putFileAs('public/' . $folderName . '/' , $file, $fileNameToStore );
+        // Storage::putFileAs('public/' . $folderName . '/' , $file, $fileNameToStore );
 
         //リサイズありの場合
-        // $fileName = uniqid(rand().'_');
-        // $extension = $imageFile->extension();
-        // $fileNameToStore = $fileName. '.' . $extension;
-        // $resizedImage = InterventionImage::make($imageFile)
-        // ->resize(1920, 1080)->encode();
-        // Storage::put('public/shops/' . $fileNameToStore,
-        // $resizedImage );
+        $fileName = uniqid(rand().'_');
+        $extension = $imageFile->extension();
+        $fileNameToStore = $fileName. '.' . $extension;
+        $resizedImage = InterventionImage::make($imageFile)
+        ->resize(1920, 1080)->encode();
+
+        // dd($imageFile, $resizedImage);
+        Storage::put('public/shops/' . $fileNameToStore,
+        $resizedImage);
         }
         return redirect()->route('owner.shops.index');
     }
