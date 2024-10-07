@@ -32,32 +32,32 @@ class CategorySeeder extends Seeder
             [
                 'name' => '靴',
                 'sort_order' => 1,
-                'primary_category' => 1
+                'primary_category_id' => 1
             ],
             [
                 'name' => 'トップス',
                 'sort_order' => 2,
-                'primary_category' => 1
+                'primary_category_id' => 1
             ],
             [
                 'name' => 'バッグ・ランドセル',
                 'sort_order' => 3,
-                'primary_category' => 1
+                'primary_category_id' => 1
             ],
             [
                 'name' => 'ギフトセット',
                 'sort_order' => 4,
-                'primary_category' => 2
+                'primary_category_id' => 2
             ],
             [
                 'name' => 'メモリアル・記念品',
                 'sort_order' => 5,
-                'primary_category' => 2
+                'primary_category_id' => 2
             ],
             [
                 'name' => 'おむつケーキ',
                 'sort_order' => 6,
-                'primary_category' => 2
+                'primary_category_id' => 2
             ],
         ]);
     }
