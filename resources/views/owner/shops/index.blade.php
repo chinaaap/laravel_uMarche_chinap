@@ -25,6 +25,7 @@
                         <x-thumbnail :filename="$shop->filename" type="shops" />
                     </div>
                     </a>
+                </div>
                     @endforeach
                 </div>
             </div>

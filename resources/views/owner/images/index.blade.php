@@ -22,6 +22,7 @@
                         <x-thumbnail :filename="$image->filename" type="products" />
                     </div>
                     </a>
+                </div>
                     @endforeach
                 </div>
                     {{ $images->links() }}
