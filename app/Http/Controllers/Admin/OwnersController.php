@@ -137,7 +137,7 @@ class OwnersController extends Controller
         return redirect()
         ->route('admin.owners.index')
         ->with(['message' => 'オーナー情報を削除しました。',
-    'status' => 'alert' ]);
+        'status' => 'alert' ]);
     }
 
     public function expiredOwnerIndex(){
