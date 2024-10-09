@@ -1,3 +1,5 @@
+import './swiper';
+
 import './bootstrap';
 
 import Alpine from 'alpinejs';
