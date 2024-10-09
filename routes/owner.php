@@ -76,7 +76,7 @@ Route::middleware('auth:owners')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
-});
+// });
 
 Route::middleware('auth:owners')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
