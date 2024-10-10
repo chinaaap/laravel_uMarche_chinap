@@ -23,9 +23,9 @@ class CartController extends Controller
         compact('products', 'totalPrice'));
     }
 
-    public function add()
+    public function add(Request $request)
     {
-        $itemInCart = Cart::where('product_id', $requset->product_id)
+        $itemInCart = Cart::where('product_id', $request->product_id)
         ->where('user_id', Auth::id())->first();
 
         if($itemInCart){
@@ -35,8 +35,8 @@ class CartController extends Controller
         } else {
             Cart::create([
                 'user_id' => Auth::id(),
-                'product_id' => $requset->product_id,
-                'quantity' => $requset->quantity,
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
             ]);
         }
 

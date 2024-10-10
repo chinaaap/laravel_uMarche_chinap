@@ -1,45 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             カート
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     @if (count($products) > 0)
+                      @foreach ($products as $product )
                         <div class="md:flex md:items-center mb-2">
-                            <div class="md:w-3/12">
-                                @if ($product->imageThird->filename !== null)
-                                <img src="{{ asset('storage/products/' . $product->imageThird->filename )}}">
-                              @else
-                              <img src="">
-                              @endif
-                            </div>
-                            <div class="md:w-4/12 md:ml-2">{{ $product->name }}</div>
-                            <div class="md:w-3/12 flex justify-around">
-                                <div>{{ $product->pivot->quantity }}個</div>
-                                <div>
-                                {{ number_format($product->pivot->quantity * $product->price )}}円(税込)
-                                </div>
-                            </div>
+                          <div class="md:w-3/12">
+                            @if ($product->imageFirst->filename !== null)
+                            <img src="{{ asset('storage/products/' . $product->imageFirst->filename )}}">
+                            @else
+                            <img src="">
+                            @endif
+                          </div>
+                          <div class="md:w-4/12 md:ml-2">{{ $product->name }}</div>
+                          <div class="md:w-3/12 flex justify-around">
+                            <div>{{ $product->pivot->quantity }}個</div>
+                            <div>{{ number_format($product->pivot->quantity * $product->price )}}<span class="text-sm text-gray-700">円(税込)</span></div>
+                          </div>
+                          <div class="md:w-2/12">
                             <form method="post" action="{{route('user.cart.delete', ['item' => $product->id ])}}">
-                                @csrf
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                      </svg>
-                                </button>
+                              @csrf
+                              <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                              </button>
                             </form>
-                            <div class="md:w-2/12">削除ボタン</div>
+                          </div>
                         </div>
+                      @endforeach
                     @else
-                        カートに商品が入っていません。
+                      カートに商品が入っていません。
                     @endif
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+  </x-app-layout>
