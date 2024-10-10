@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Stock;
+
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -83,6 +85,7 @@ class CartController extends Controller
                 'quantity' => $product->pivot->quantity * -1
             ]);
         }
+        dd('test');
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
