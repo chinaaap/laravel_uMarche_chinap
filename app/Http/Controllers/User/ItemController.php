@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
-use App\Jobs\SendThanksMail;
 
 class ItemController extends Controller
 {
@@ -38,7 +37,7 @@ class ItemController extends Controller
         // ->send(new TestMail());
 
         // 非同期的送信
-        SendThanksMail::dispatch();
+        // SendThanksMail::dispatch();
 
         $categories = PrimaryCategory::with('secondary')
         ->get();
